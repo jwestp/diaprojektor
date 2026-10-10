@@ -96,7 +96,7 @@ const Projector = ({ slides }: Props): JSX.Element => {
           </motion.div>
         )}
       </AnimatePresence>
-      {['./images/intro.jpg', ...slides].map((slide, i) => (
+      {['./images/intro-de.svg', ...slides].map((slide, i) => (
         <motion.div
           key={`slide-${slide}`}
           variants={{

@@ -19,17 +19,17 @@ const SlideTray = ({ onChange }: Props): JSX.Element => {
   return (
     <div className="slide-tray">
       <label htmlFor="slides">
-        Load your slides*
+        Lade deine Dias*
         <br />
         <span>↓</span>
         <img
           src="./images/np_carousel-slide-projector_1123953_000000.svg"
           alt="slide projector icon"
         />
-        <i>Chromium or Firefox recommended</i>
+        <i>Chromium oder Firefox empfohlen</i>
         <i>
-          *your photographs will not leave your browser; there is no upload to
-          any server
+          *Deine Fotos bleiben in deinem Browser. Sie werden nicht auf einen
+          Server hochgeladen.
         </i>
       </label>
       <input

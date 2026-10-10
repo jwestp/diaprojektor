@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="1333" viewBox="0 0 2000 1333">
+  <rect width="2000" height="1333" fill="#fff"/>
+  <g fill="none" stroke="#111" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M725 239v332h550V239" stroke-width="15"/>
+    <rect x="711" y="207" width="578" height="36" rx="18" stroke-width="15"/>
+    <path d="M1000 572v31" stroke-width="14"/>
+  </g>
+  <g fill="#111" font-family="Courier New, monospace">
+    <g font-size="57" font-weight="400" text-anchor="middle">
+      <text x="741" y="763">←</text>
+      <text x="805" y="763">→</text>
+      <text x="925" y="763" text-anchor="start" font-size="42">Navigieren</text>
+      <text x="772" y="862" font-size="48">F</text>
+      <text x="925" y="862" text-anchor="start" font-size="42">Vollbild</text>
+      <text x="772" y="961" font-size="48">M</text>
+      <text x="925" y="961" text-anchor="start" font-size="42">Alle Töne stummschalten</text>
+      <text x="772" y="1060" font-size="48">A</text>
+      <text x="925" y="1060" text-anchor="start" font-size="42">Automatische Wiedergabe</text>
+      <text x="772" y="1159" font-size="58">↻</text>
+      <text x="925" y="1159" text-anchor="start" font-size="42">Zum Zurücksetzen neu laden</text>
+    </g>
+  </g>
+</svg>
