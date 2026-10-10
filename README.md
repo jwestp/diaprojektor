@@ -1,6 +1,8 @@
-# 📽 Slide night
+# 📽 Slide Night
 
-Slide night is a React application built with Vite and TypeScript.
+Slide Night is a browser-based slideshow app that lets you select local photos
+and enjoy them as a nostalgic slide-projector presentation. Your photos stay in
+your browser and are never uploaded to a server.
 
 ## Getting started
 
