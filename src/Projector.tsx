@@ -2,10 +2,25 @@ import { useEffect, useState, type JSX } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useKey } from 'rooks';
 
+import ProjectorEffects, {
+  SlideImageEffects,
+  type ProjectorEffectsConfig,
+} from './ProjectorEffects';
 import './Projector.css';
 
 const inSound = new Audio('./sounds/in.mp3');
 const outSound = new Audio('./sounds/out.mp3');
+const slideExitDuration = 0.47;
+const slideEntryDuration = 0.3;
+
+const PROJECTOR_EFFECTS_CONFIG: ProjectorEffectsConfig = {
+  dust: true,
+  exposure: true,
+  focusDrift: true,
+  hotspot: true,
+  strayLight: true,
+  vignette: true,
+};
 
 type Props = {
   slides: string[];
@@ -88,7 +103,7 @@ const Projector = ({ slides }: Props): JSX.Element => {
             hidden: {
               x: '-100%',
               transition: {
-                duration: 0.47, // out.mp3
+                duration: slideExitDuration, // out.mp3
                 type: 'tween',
                 ease: 'easeIn',
               },
@@ -96,8 +111,8 @@ const Projector = ({ slides }: Props): JSX.Element => {
             visible: {
               x: 0,
               transition: {
-                delay: 0.47,
-                duration: 0.3, // in.mp3
+                delay: slideExitDuration,
+                duration: slideEntryDuration, // in.mp3
                 type: 'tween',
                 ease: 'easeIn',
               },
@@ -109,9 +124,16 @@ const Projector = ({ slides }: Props): JSX.Element => {
         >
           <div className="slide-image">
             <img src={slide} alt="nice landscape" />
+            <SlideImageEffects config={PROJECTOR_EFFECTS_CONFIG} />
           </div>
         </motion.div>
       ))}
+      <ProjectorEffects
+        config={PROJECTOR_EFFECTS_CONFIG}
+        slideIndex={index}
+        slideExitDuration={slideExitDuration}
+        slideEntryDuration={slideEntryDuration}
+      />
     </div>
   );
 };

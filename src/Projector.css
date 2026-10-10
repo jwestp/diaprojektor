@@ -19,7 +19,6 @@ body {
   bottom: 0;
   left: 0;
   z-index: 98;
-  border-left: 5vw solid black;
   box-shadow: inset 0 0 2px 2px black;
   box-sizing: border-box;
 }
@@ -49,6 +48,8 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
+  --slide-frame-size: 30px;
+  --slide-corner-radius: 50px;
   transform: translate(-50%, -50%);
 }
 
@@ -61,7 +62,7 @@ body {
   left: 0;
   background: white;
   border: 1px solid transparent;
-  border-image: url("../public/images/border.webp") 120 / 30px round;
+  border-image: url("../public/images/border.webp") 120 / var(--slide-frame-size) round;
   mix-blend-mode: multiply;
 }
 
