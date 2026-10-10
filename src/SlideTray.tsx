@@ -1,6 +1,4 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState, type JSX } from 'react';
 
 import './SlideTray.css';
 

@@ -1,8 +1,6 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState, type JSX } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useInterval, useKey } from 'rooks';
+import { useKey } from 'rooks';
 
 import './Projector.css';
 
@@ -21,16 +19,7 @@ const Projector = ({ slides }: Props): JSX.Element => {
   const increment = () => setIndex(i => (i < slides.length ? i + 1 : 0));
   const decrement = () => setIndex(i => (i > 0 ? i - 1 : 0));
 
-  const { start, stop } = useInterval(() => {
-    increment();
-  }, 4000) as unknown as { start: () => void; stop: () => void };
-
   const toggleAuto = () => {
-    if (auto) {
-      stop();
-    } else {
-      start();
-    }
     setAuto(i => !i);
   };
 
@@ -46,6 +35,18 @@ const Projector = ({ slides }: Props): JSX.Element => {
   useKey([37], decrement);
   useKey([39], increment);
   useKey([32], toggleAuto);
+
+  useEffect(() => {
+    if (!auto) {
+      return;
+    }
+
+    const intervalId = window.setInterval(() => {
+      setIndex(i => (i < slides.length ? i + 1 : 0));
+    }, 4000);
+
+    return () => window.clearInterval(intervalId);
+  }, [auto, slides.length]);
 
   useEffect(() => {
     if (!muted) {

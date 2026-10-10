@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import Projector from 'Projector';
-import SlideTray from 'SlideTray';
+import { useState } from 'react';
+import Projector from './Projector';
+import SlideTray from './SlideTray';
 
 const App = () => {
   const [slides, setSlides] = useState<string[]>([]);
