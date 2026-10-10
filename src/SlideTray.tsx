@@ -1,4 +1,4 @@
-import { useEffect, useState, type JSX } from 'react';
+import { type ChangeEvent, type JSX } from 'react';
 
 import './SlideTray.css';
 
@@ -7,13 +7,14 @@ type Props = {
 };
 
 const SlideTray = ({ onChange }: Props): JSX.Element => {
-  const [slides, setSlides] = useState<FileList | null>(null);
+  
+  const onFileSelect = (event: ChangeEvent<HTMLInputElement>): void => {
+    const slides = Array.from(event.currentTarget.files ?? [])
+      .sort((a, b) => a.name.localeCompare(b.name))
+      .map(file => URL.createObjectURL(file));
 
-  useEffect(
-    () =>
-      onChange(Array.from(slides ?? []).map(file => URL.createObjectURL(file))),
-    [slides, onChange]
-  );
+    onChange(slides);
+  };
 
   return (
     <div className="slide-tray">
@@ -37,7 +38,7 @@ const SlideTray = ({ onChange }: Props): JSX.Element => {
         name="slides"
         accept="image/png, image/jpeg, image/webp, image/avif"
         multiple
-        onChange={e => setSlides(e.target.files)}
+        onChange={onFileSelect}
       />
     </div>
   );
