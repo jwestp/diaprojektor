@@ -1,38 +1,45 @@
-# 📽 Slide Night
+# 📽 Diaprojektor
 
-Slide Night is a browser-based slideshow app that lets you select local photos
-and enjoy them as a nostalgic slide-projector presentation. Your photos stay in
-your browser and are never uploaded to a server.
+**Diaprojektor** ist eine browserbasierte Diashow-Anwendung. Wähle lokale Fotos aus
+und genieße sie wie bei einer nostalgischen Diaprojektor-Präsentation. Deine
+Fotos bleiben im Browser und werden niemals auf einen Server hochgeladen.
 
-## Getting started
+> **Hinweis:** Dieses Projekt ist ein Fork von
+> [Yago/slide-night](https://github.com/Yago/slide-night).
 
-Install the dependencies:
+## Einrichtung
+
+Installiere zunächst die Abhängigkeiten:
 
 ```sh
 npm install
 ```
 
-## Available scripts
+## Verfügbare Befehle
 
 ### `npm run dev`
 
-Starts the Vite development server at [http://localhost:3000](http://localhost:3000).
+Startet den Vite-Entwicklungsserver unter
+[http://localhost:3000](http://localhost:3000).
 
 ### `npm run build`
 
-Type-checks the project and creates an optimized production build in `dist/`.
+Prüft die TypeScript-Typen und erstellt einen optimierten Produktions-Build im
+Ordner `dist/`.
 
 ### `npm run preview`
 
-Serves the production build locally so you can preview it before deployment.
+Stellt den Produktions-Build lokal bereit, damit du ihn vor der
+Veröffentlichung ansehen kannst.
 
 ### `npm run lint`
 
-Runs ESLint across the project.
+Führt ESLint für das gesamte Projekt aus.
 
-## Deployment
+## Veröffentlichung
 
-The GitHub Actions workflow deploys the app to GitHub Pages on every push to
-`main`. In the repository settings, open **Settings → Pages** and set **Build
-and deployment → Source** to **GitHub Actions**. The workflow builds the app
-with the Pages base path and publishes the `dist/` directory.
+Der GitHub-Actions-Workflow veröffentlicht die Anwendung bei jedem Push auf
+`main` über GitHub Pages. Öffne in den Repository-Einstellungen **Settings →
+Pages** und setze unter **Build and deployment → Source** die Quelle auf
+**GitHub Actions**. Der Workflow erstellt den Build mit dem passenden
+Pages-Basispfad und veröffentlicht den Ordner `dist/`.

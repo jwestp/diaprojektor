@@ -1,6 +1,6 @@
 {
-    "short_name": "Slide Night",
-    "name": "Slide projector emulator",
+    "short_name": "Diaprojektor",
+    "name": "Diaprojektor",
     "icons": [
         {
             "src": "./android-chrome-192x192.png",
