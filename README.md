@@ -29,3 +29,10 @@ Serves the production build locally so you can preview it before deployment.
 ### `npm run lint`
 
 Runs ESLint across the project.
+
+## Deployment
+
+The GitHub Actions workflow deploys the app to GitHub Pages on every push to
+`main`. In the repository settings, open **Settings → Pages** and set **Build
+and deployment → Source** to **GitHub Actions**. The workflow builds the app
+with the Pages base path and publishes the `dist/` directory.
