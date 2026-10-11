@@ -66,6 +66,7 @@ export const SlideImageEffects = ({
   config,
 }: SlideImageEffectsProps): JSX.Element => (
   <div className="projector-image-effects" aria-hidden="true">
+    {config.dust && <DustEffect />}
     {config.focusDrift && (
       <div className="projector-image-effects__focus-drift" />
     )}
@@ -151,7 +152,6 @@ const ProjectorEffects = ({
       {config.strayLight && (
         <div className="projector-effects__stray-light" />
       )}
-      {config.dust && <DustEffect />}
       <ShutterEffect
         slideIndex={slideIndex}
         slideExitDuration={slideExitDuration}
