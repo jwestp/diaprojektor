@@ -1,0 +1,107 @@
+.settings-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgb(0 0 0 / 42%);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.settings-menu {
+  width: min(100%, 30rem);
+  padding: 1.25rem;
+  color: #f4f4f4;
+  background: rgb(20 20 20 / 94%);
+  border: 1px solid rgb(255 255 255 / 14%);
+  border-radius: 0.75rem;
+  box-shadow: 0 1.5rem 5rem rgb(0 0 0 / 40%);
+  font-family: Arial, sans-serif;
+}
+
+.settings-menu__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.settings-menu__header h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.settings-menu__close {
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  border-radius: 0.35rem;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.settings-menu__row {
+  display: flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 1px solid rgb(255 255 255 / 9%);
+  font-size: 0.9rem;
+}
+
+.settings-menu__buttons {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 0.35rem;
+}
+
+.settings-menu__buttons button {
+  min-width: 3.25rem;
+  padding: 0.4rem 0.65rem;
+  color: rgb(255 255 255 / 65%);
+  background: rgb(255 255 255 / 6%);
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: 0.35rem;
+  font: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.settings-menu__buttons button.is-selected {
+  color: #fff;
+  background: rgb(255 255 255 / 20%);
+  border-color: rgb(255 255 255 / 38%);
+}
+
+.settings-menu button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+@media (max-width: 360px) {
+  .settings-menu {
+    padding: 1rem;
+  }
+
+  .settings-menu__row {
+    gap: 0.5rem;
+    font-size: 0.82rem;
+  }
+
+  .settings-menu__buttons {
+    gap: 0.2rem;
+  }
+
+  .settings-menu__buttons button {
+    min-width: 2.8rem;
+    padding-inline: 0.45rem;
+  }
+}

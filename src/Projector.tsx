@@ -4,8 +4,9 @@ import { useKey } from 'rooks';
 
 import ProjectorEffects, {
   SlideImageEffects,
-  type ProjectorEffectsConfig,
 } from './ProjectorEffects';
+import SettingsMenu from './SettingsMenu';
+import useProjectorSettings from './useProjectorSettings';
 import './Projector.css';
 
 const inSound = new Audio('./sounds/in.mp3');
@@ -13,23 +14,15 @@ const outSound = new Audio('./sounds/out.mp3');
 const slideExitDuration = 0.47;
 const slideEntryDuration = 0.3;
 
-const PROJECTOR_EFFECTS_CONFIG: ProjectorEffectsConfig = {
-  dust: true,
-  exposure: true,
-  focusDrift: true,
-  hotspot: true,
-  strayLight: true,
-  vignette: true,
-};
-
 type Props = {
   slides: string[];
 };
 
 const Projector = ({ slides }: Props): JSX.Element => {
   const [index, setIndex] = useState(0);
-  const [muted, setMuted] = useState(false);
   const [auto, setAuto] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const { settings, updateSetting } = useProjectorSettings();
 
   const increment = () => setIndex(i => (i < slides.length ? i + 1 : 0));
   const decrement = () => setIndex(i => (i > 0 ? i - 1 : 0));
@@ -39,17 +32,50 @@ const Projector = ({ slides }: Props): JSX.Element => {
   };
 
   useKey(['f'], () => {
+    if (settingsOpen) {
+      return;
+    }
+
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen();
     } else {
       document.exitFullscreen();
     }
   });
-  useKey(['m'], () => setMuted(i => !i));
-  useKey(['a'], toggleAuto);
-  useKey([37], decrement);
-  useKey([39], increment);
-  useKey([32], toggleAuto);
+  useKey(['a'], () => {
+    if (!settingsOpen) {
+      toggleAuto();
+    }
+  });
+  useKey([37], () => {
+    if (!settingsOpen) {
+      decrement();
+    }
+  });
+  useKey([39], () => {
+    if (!settingsOpen) {
+      increment();
+    }
+  });
+  useKey([32], () => {
+    if (!settingsOpen) {
+      toggleAuto();
+    }
+  });
+
+  useEffect(() => {
+    const handleSettingsKeyDown = (event: KeyboardEvent) => {
+      if (event.key.toLowerCase() === 's' && !event.repeat) {
+        event.preventDefault();
+        setSettingsOpen(isOpen => !isOpen);
+      } else if (event.key === 'Escape') {
+        setSettingsOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleSettingsKeyDown);
+    return () => window.removeEventListener('keydown', handleSettingsKeyDown);
+  }, []);
 
   useEffect(() => {
     if (!auto) {
@@ -64,7 +90,7 @@ const Projector = ({ slides }: Props): JSX.Element => {
   }, [auto, slides.length]);
 
   useEffect(() => {
-    if (!muted) {
+    if (settings.soundEnabled) {
       outSound.play();
       setTimeout(() => {
         inSound.play();
@@ -124,16 +150,23 @@ const Projector = ({ slides }: Props): JSX.Element => {
         >
           <div className="slide-image">
             <img src={slide} alt="nice landscape" />
-            <SlideImageEffects config={PROJECTOR_EFFECTS_CONFIG} />
+            <SlideImageEffects config={settings} />
           </div>
         </motion.div>
       ))}
       <ProjectorEffects
-        config={PROJECTOR_EFFECTS_CONFIG}
+        config={settings}
         slideIndex={index}
         slideExitDuration={slideExitDuration}
         slideEntryDuration={slideEntryDuration}
       />
+      {settingsOpen && (
+        <SettingsMenu
+          settings={settings}
+          onChange={updateSetting}
+          onClose={() => setSettingsOpen(false)}
+        />
+      )}
     </div>
   );
 };
