@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import type { ProjectorEffectsConfig } from './ProjectorEffects';
 
 export type ProjectorSettings = ProjectorEffectsConfig & {
+  enlargeSmallImages: boolean;
   soundEnabled: boolean;
 };
 
@@ -15,6 +16,7 @@ const DEFAULT_SETTINGS: ProjectorSettings = {
   strayLight: false,
   vignette: false,
   soundEnabled: true,
+  enlargeSmallImages: false,
 };
 
 const isProjectorSettings = (value: unknown): value is ProjectorSettings =>
@@ -53,6 +55,7 @@ const loadSettings = (): ProjectorSettings => {
     strayLight: parsedSettings.strayLight,
     vignette: parsedSettings.vignette,
     soundEnabled: parsedSettings.soundEnabled,
+    enlargeSmallImages: parsedSettings.enlargeSmallImages,
   };
 };
 

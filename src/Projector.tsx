@@ -148,7 +148,9 @@ const Projector = ({ slides }: Props): JSX.Element => {
           animate={i === index ? 'visible' : 'hidden'}
           className="slide"
         >
-          <div className="slide-image">
+          <div
+            className={`slide-image${settings.enlargeSmallImages ? ' slide-image--enlarge' : ''}`}
+          >
             <img src={slide} alt="nice landscape" />
             <SlideImageEffects config={settings} />
           </div>

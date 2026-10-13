@@ -12,6 +12,7 @@ type Props = {
 
 const rows: ReadonlyArray<{ key: SettingKey; label: string }> = [
   { key: 'soundEnabled', label: 'Projektortöne' },
+  { key: 'enlargeSmallImages', label: 'Kleine Bilder vergrößern' },
   { key: 'dust', label: 'Staub im Lichtkegel' },
   { key: 'exposure', label: 'Belichtungsschwankung' },
   { key: 'focusDrift', label: 'Fokusflimmern' },

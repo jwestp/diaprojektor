@@ -82,3 +82,7 @@ body {
   max-width: 90vw;
   max-height: 90vh;
 }
+
+.slide-image--enlarge img {
+  height: 90vh;
+}
